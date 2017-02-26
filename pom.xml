@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.keveon.architecture</groupId>
+    <artifactId>multi-module-architecture</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>model</module>
+    </modules>
+    <packaging>pom</packaging>
+
+    <url>${project.homepage}</url>
+    <inceptionYear>2017</inceptionYear>
+    <name>multi-module-architecture</name>
+    <description>Multi module architecture project for Spring Boot</description>
+
+    <scm>
+        <connection>${project.checkout}</connection>
+        <developerConnection>${project.checkout}</developerConnection>
+        <url>${project.githubpage}</url>
+    </scm>
+
+    <prerequisites>
+        <maven>3.2.1</maven>
+    </prerequisites>
+
+    <developers>
+        <developer>
+            <id>kevoen</id>
+            <name>Keveon Wang</name>
+            <email>keveon@keveon.com</email>
+            <roles>
+                <role>Project lead</role>
+            </roles>
+            <timezone>+8</timezone>
+            <properties>
+                <url>http://www.keveon.com</url>
+                <githubUrl>http://github.com/keveon</githubUrl>
+                <oscGitUrl>http://git.oschina.net/keveon</oscGitUrl>
+            </properties>
+        </developer>
+    </developers>
+
+    <distributionManagement>
+        <downloadUrl>${project.githubpage}</downloadUrl>
+    </distributionManagement>
+
+    <!--<licenses>-->
+    <!--<license>-->
+    <!--<name>Apache License, Version 2.0</name>-->
+    <!--<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>-->
+    <!--</license>-->
+    <!--</licenses>-->
+
+    <profiles>
+        <!--<profile>-->
+        <!--<id>spring5</id>-->
+        <!--<properties>-->
+        <!--<spring.version>5.0.0.M3</spring.version>-->
+        <!--</properties>-->
+        <!--</profile>-->
+
+        <profile>
+            <id>all</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <modules>
+                <module>commons</module>
+                <module>model</module>
+                <module>repository</module>
+                <module>service</module>
+                <module>web</module>
+            </modules>
+        </profile>
+    </profiles>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.1.RELEASE</version>
+        <relativePath/>
+    </parent>
+
+    <properties>
+        <project.homepage>http://www.keveon.com</project.homepage>
+        <project.githubpage>http://github.com/keveon/multi-module-architecture</project.githubpage>
+        <project.checkout>scm:git:git@github.com:keveon/multi-module-architecture.git</project.checkout>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+
+        <!-- default groups to exclude from surefire plugin -->
+        <excludedGroups/>
+        <!-- groups to run with surefire plugin - intended to be overridden on the command line -->
+        <includedGroups/>
+        <!-- 命令行参数 -->
+        <argLine/>
+
+        <surefire.version>2.19.1</surefire.version>
+        <maven-pmd-plugin.version>3.7</maven-pmd-plugin.version>
+        <animal-sniffer.version>1.15</animal-sniffer.version>
+        <maven-checkstyle-plugin>2.17</maven-checkstyle-plugin>
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- 服务健康状态 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <!-- 简化Bean -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- 测试 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+
+        <finalName>${project.artifactId}</finalName>
+
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <!-- 编译 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <compilerArgument>-parameters</compilerArgument>
+                </configuration>
+            </plugin>
+
+            <!-- 源代码打包 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven-source-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Javadoc -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
+                <configuration>
+                    <outputDirectory>${project.build.directory}/dist/apidocs</outputDirectory>
+                    <reportOutputDirectory>${project.build.directory}/dist/apidocs</reportOutputDirectory>
+                    <groups>
+                        <group>
+                            <title>All</title>
+                            <packages>com.keveon.architecture.*</packages>
+                        </group>
+                        <group>
+                            <title>Tools</title>
+                            <packages>com.keveon.architecture.tools</packages>
+                        </group>
+                    </groups>
+                </configuration>
+            </plugin>
+
+            <!-- 测试 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <excludedGroups>${excludedGroups}</excludedGroups>
+                    <groups>${includedGroups}</groups>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.surefire</groupId>
+                        <artifactId>surefire-junit47</artifactId>
+                        <version>${surefire.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <!-- Jar -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <useDefaultManifestFile>true</useDefaultManifestFile>
+                </configuration>
+            </plugin>
+
+            <!-- 自动定义打包 -->
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptors>
+                        <descriptor>./src/main/assembly.xml</descriptor>
+                    </descriptors>
+                    <outputDirectory>./target/dist</outputDirectory>
+                </configuration>
+            </plugin>
+
+            <!-- 源码分析  -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>${maven-pmd-plugin.version}</version>
+                <configuration>
+                    <targetJdk>${java.version}</targetJdk>
+                    <includeTests>true</includeTests>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
+                <configuration>
+                    <detectJavaApiLink>true</detectJavaApiLink>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
+
+</project>
