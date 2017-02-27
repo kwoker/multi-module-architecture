@@ -6,14 +6,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.query.Param;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.web.PageableDefault;
 
 /**
  * Created by Keveon on 2017/2/26.
  * User com.keveon.architecture.repository
  */
-@RepositoryRestResource
+//@RepositoryRestResource
 public interface UserRepository extends JpaRepository<User, Long>, JpaSpecificationExecutor<User> {
     /**
      * 通过用户名关键字模糊查询用户信息

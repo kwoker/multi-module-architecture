@@ -3,25 +3,22 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>model</artifactId>
-
-    <name>Model</name>
-    <description>Model project for Architecture</description>
-
     <parent>
         <artifactId>multi-module-architecture</artifactId>
         <groupId>com.keveon.architecture</groupId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath>..</relativePath>
     </parent>
 
-    <dependencies>
+    <artifactId>model</artifactId>
+    <name>Model</name>
+    <description>Model project for Architecture</description>
 
+    <dependencies>
         <!-- Spring Data JPA -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-
     </dependencies>
-
 </project>

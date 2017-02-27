@@ -4,44 +4,33 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>web</artifactId>
-    <packaging>pom</packaging>
-
-    <name>Web Layer</name>
-    <description>Web layer project for Architecture</description>
-
     <parent>
         <groupId>com.keveon.architecture</groupId>
         <artifactId>multi-module-architecture</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <main.basedir>${basedir}/..</main.basedir>
-    </properties>
+    <artifactId>web</artifactId>
+    <name>Web Layer</name>
+    <description>Web layer project for Architecture</description>
 
     <dependencies>
         <!-- Commons dependency -->
         <dependency>
-            <groupId>com.keveon.architecture</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>commons</artifactId>
-            <version>${project.version}</version>
         </dependency>
 
         <!-- Model dependency -->
         <dependency>
-            <groupId>com.keveon.architecture</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>model</artifactId>
-            <version>${project.version}</version>
         </dependency>
 
         <!-- Service dependency -->
         <dependency>
-            <groupId>com.keveon.architecture</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>service</artifactId>
-            <version>${project.version}</version>
         </dependency>
-
     </dependencies>
-
 </project>
