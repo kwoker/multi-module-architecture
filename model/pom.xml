@@ -15,6 +15,12 @@
     <description>Model project for Architecture</description>
 
     <dependencies>
+        <!-- Commons dependency -->
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>commons</artifactId>
+        </dependency>
+
         <!-- Spring Data JPA -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
