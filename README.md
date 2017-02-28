@@ -2,9 +2,10 @@
 
 ## 项目简介
 
+- 本项目的开发目的是定义一个通用的、便捷的、多模块的脚手架, 在未来会慢慢扩充. 
 - 本项目采用 [SpringBoot](http://projects.spring.io/spring-boot/)
   当前最新的 `1.5.1.RELEASE` 做基础架构支撑, 参考本项目建议有一定的 [SpringBoot](http://projects.spring.io/spring-boot/) 基础及经验.
-- 项目中Bean全部采用 [lombok](https://projectlombok.org/) 进行精简, 需要配合IDE插件使用, 在此项目不进行讨论, 如需了解更多, 参考以下链接：
+- 项目中Bean全部采用 [lombok](https://projectlombok.org/) 进行精简, 需要配合IDE插件使用, 在此项目不进行讨论, 如需了解更多, 参考以下链接: 
   - 官方文档地址：[https://projectlombok.org/features/index.html](https://projectlombok.org/features/index.html)
   - 官方下载地址：[https://projectlombok.org/download.html](https://projectlombok.org/download.html)
   - 第三方英文文档：[http://jnb.ociweb.com/jnb/jnbJan2010.html](http://jnb.ociweb.com/jnb/jnbJan2010.html)
@@ -19,7 +20,22 @@
 
 >在开始提到, 本项目采用SpringBoot做基础架构支撑, 请参阅我们使用 [Maven](https://spring.io/guides/gs/maven/) 和 [Gradle](https://spring.io/guides/gs/gradle/) 构建的入门指南.
 
-----
+#### 项目结构 ( Modules 介绍 )
+> 最外层的 `pom.xml` 是整个项目的parent定义, 在此文件内配置了本项目使用的 `SpringBoot` 的版本、 dependencies、 插件配置、 环境设置等信息;
+
+###### 目录介绍
+- `commons`: 用来放公共工具类的等;
+- `model`: 存放 `Entity`;
+- `repository`: 数据持久层, 其下有三个package, 分别为:
+  - `repository`: 存放 `spring-data-jpa` 的 `Repositories`;
+  - `Mapper`: 存放 `MyBatis` 的 `Mappers`;
+  - `jdbc`: 存放 `jdbc` 相关的 `DAO`;
+- `service`: 业务逻辑层;
+- `web`: 提供控制器及REST接口:
+  - `rest`: 直接对外提供 `RESTFul` 接口.
+  - `controller`: 提供 `SpringMVC` 的 `Controllers`;
+
+###### 注: 数据库连接、server配置等都放在web层, src/main/resources 目录下;
 
 ## 附录A：Github 常用按钮说明
 
