@@ -12,13 +12,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.PostConstruct;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("test")
+@RunWith(SpringRunner.class)
 public class ApplicationTests {
 
-	@Autowired
 	@NonNull
+	@Autowired
 	private UserRepository repository;
 
 	@PostConstruct
@@ -36,5 +36,4 @@ public class ApplicationTests {
 	@Test
 	public void contextLoads() {
 	}
-
 }
