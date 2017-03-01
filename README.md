@@ -18,24 +18,23 @@
 
 #### 准备工作
 
->在开始提到, 本项目采用SpringBoot做基础架构支撑, 请参阅我们使用 [Maven](https://spring.io/guides/gs/maven/) 和 [Gradle](https://spring.io/guides/gs/gradle/) 构建的入门指南.
+>在开始提到, 本项目采用SpringBoot做基础架构支撑, 请参阅我们使用 [Maven](https://spring.io/guides/gs/maven/) 构建的入门指南.
 
 #### 项目结构 ( Modules 介绍 )
-> 最外层的 `pom.xml` 是整个项目的parent定义, 在此文件内配置了本项目使用的 `SpringBoot` 的版本、 dependencies、 插件配置、 环境设置等信息;
+> 最外层的 `pom.xml` 是整个项目的parent定义, 在此文件内配置了本项目使用的 `SpringBoot` 的版本、 dependencies、 插件配置、 环境设置等信息.
 
 ###### 目录介绍
-- `commons`: 用来放公共工具类的等;
-- `model`: 存放 `Entity`;
-- `repository`: 数据持久层, 其下有三个package, 分别为:
-  - `repository`: 存放 `spring-data-jpa` 的 `Repositories`;
-  - `Mapper`: 存放 `MyBatis` 的 `Mappers`;
-  - `jdbc`: 存放 `jdbc` 相关的 `DAO`;
-- `service`: 业务逻辑层;
-- `web`: 提供控制器及REST接口:
-  - `rest`: 直接对外提供 `RESTFul` 接口.
-  - `controller`: 提供 `SpringMVC` 的 `Controllers`;
+- [commons](commons): 用来放公共工具类的等.
+- [model](model): 存放 `Entity`.
+- [repository](repository): 数据持久层, 其下有三个package, 分别为:
+  - [repository](repository/src/main/java/com/keveon/architecture/repository): 存放 `spring-data-jpa` 的 `Repositories`.
+  - [mapper](repository/src/main/java/com/keveon/architecture/mapper): 存放 `MyBatis` 的 `Mappers`.
+- [service](service): 业务逻辑层.
+- [web](web): 提供控制器及REST接口:
+  - [rest](web/src/main/java/com/keveon/architecture/rest): 直接对外提供 `RESTful` 接口.
+  - [controller](web/src/main/java/com/keveon/architecture/controller): 提供 `SpringMVC` 的 `Controllers`.
 
-###### 注: 数据库连接、server配置等都放在web层, src/main/resources 目录下;
+###### 注: 数据库连接、容器配置等都放在 `web` 层 [src/main/resources](web/src/main/resources) 目录下.
 
 ## 附录A：Github 常用按钮说明
 
@@ -53,4 +52,4 @@
 ## 结束语
 
 - 真心感谢这些志同道合的人, 这个真的很重要, 也希望你能一起参与（鞠躬）！
-- 同时感谢那些通过私聊方式指出一些错误地方的朋友, 使得该教程能得以更加完善, 真心感谢（鞠躬）！
+- 同时感谢那些通过私聊或其他方式指出一些错误地方的朋友, 使得该教程能得以更加完善, 真心感谢（鞠躬）！
