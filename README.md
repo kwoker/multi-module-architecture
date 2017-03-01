@@ -45,6 +45,7 @@
 ## 附录B：Spring Data JPA 常用功能讲解
 >* [spring-data-jpa-demo](https://github.com/Keveon/spring-data-jpa-demo): 本项目是一个SpringDataJpa的demo项目, 旨在演示大部分常用的使用方法.
 >* [spring-security-demo](https://github.com/Keveon/spring-security-demo): 本项目是一个SpringSecurity的demo项目, 旨在演示部分使用方法。
+
 ## 联系方式
 
 - Github: <https://github.com/Keveon>
