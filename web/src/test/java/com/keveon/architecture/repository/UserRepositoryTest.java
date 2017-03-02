@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.hamcrest.Matchers.greaterThanOrEqualTo;
@@ -19,7 +20,7 @@ import static org.junit.Assert.assertThat;
  * User repository tests
  */
 @SpringBootTest
-//@ActiveProfiles("test")
+@ActiveProfiles("test")
 @RunWith(SpringRunner.class)
 public class UserRepositoryTest {
 
